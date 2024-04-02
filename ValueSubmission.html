@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Value Submission</title>
+    <script>
+        function calculateResult() {
+            // Retrieve values from input fields
+            var value1 = parseFloat(document.getElementById('value1').value);
+            var value2 = parseFloat(document.getElementById('value2').value);
+            var value3 = parseFloat(document.getElementById('value3').value);
+            var value4 = parseFloat(document.getElementById('value4').value);
+            var value5 = parseFloat(document.getElementById('value5').value);
+            var value6 = parseFloat(document.getElementById('value6').value);
+            var value7 = parseFloat(document.getElementById('value7').value);
+            var value8 = parseFloat(document.getElementById('value8').value);
+            var value9 = parseFloat(document.getElementById('value9').value);
+
+            // Perform calculation
+            var result = value1 + value2 + value3 + value4 + value5 + value6 + value7 + value8 + value9;
+
+            // Display result
+            document.getElementById('result').innerHTML = "Result: " + result;
+        }
+    </script>
+</head>
+<body>
+    <h2>Value Submission</h2>
+    <form>
+        <label for="value1">Value 1:</label>
+        <input type="number" id="value1" name="value1"><br><br>
+
+        <label for="value2">Value 2:</label>
+        <input type="number" id="value2" name="value2"><br><br>
+
+        <label for="value3">Value 3:</label>
+        <input type="number" id="value3" name="value3"><br><br>
+
+        <label for="value4">Value 4:</label>
+        <input type="number" id="value4" name="value4"><br><br>
+
+        <label for="value5">Value 5:</label>
+        <input type="number" id="value5" name="value5"><br><br>
+
+        <label for="value6">Value 6:</label>
+        <input type="number" id="value6" name="value6"><br><br>
+
+        <label for="value7">Value 7:</label>
+        <input type="number" id="value7" name="value7"><br><br>
+
+        <label for="value8">Value 8:</label>
+        <input type="number" id="value8" name="value8"><br><br>
+
+        <label for="value9">Value 9:</label>
+        <input type="number" id="value9" name="value9"><br><br>
+
+        <button type="button" onclick="calculateResult()">Calculate</button>
+    </form>
+
+    <div id="result"></div>
+</body>
+</html>
