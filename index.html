@@ -11,71 +11,88 @@
         <label for="option1">Total Cost of Project ($):</label>
         <input type="number" id="option1" name="option1"><br><br>
         
-        <label for="option2">Number of Switchboards:</label>
+        <label for="option2">1. Is MSB a switchboard or I-line panel?:</label>
         <select id="option2" name="option2">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
+            <option value="0">Switchboard</option>
+            <option value="18">I-line</option>
         </select><br><br>
 
         <!-- Repeat the same structure for the remaining options -->
         <!-- For example: -->
-        <label for="option3">Did you quote panel A as main lug or main circuit?:</label>
+        <label for="option3">2. Did you quote panel C as main lug or main circuit?:</label>
         <select id="option3" name="option3">
-            <option value="0">Maing Lug</option>
-            <option value="1">Main Circuit Breaker</option>
+            <option value="6">Main Lug</option>
+            <option value="0">Main Circuit Breaker</option>
         </select><br><br>
 
-        <label for="option4">Did you include the unit circuit breaker upstream from panel B?:</label>
+        <label for="option4">3. Did you include the disconnect upstream from panel A?:</label>
         <select id="option4" name="option4">
             <option value="0">Yes</option>
-            <option value="1">No</option>
+            <option value="8">No</option>
         </select><br><br>
 
-        <label for="option5">What was the SCCR of Panel A?:</label>
+        <label for="option5">4. What was the SCCR of Panel A?:</label>
         <select id="option5" name="option5">
             <option value="0">65,000</option>
-            <option value="1">42,000</option>
-            <option value="2">22,000</option>
-            <option value="2">10,000</option>
+            <option value="0">42,000</option>
+            <option value="0">22,000</option>
+            <option value="10">10,000</option>
         </select><br><br>
 
-        <label for="option6">Was this project fully of series rated?:</label>
+        <label for="option6">5. Was this project fully of series rated?:</label>
         <select id="option6" name="option6">
-            <option value="0">series</option>
-            <option value="1">fully</option>
+            <option value="20">series</option>
+            <option value="0">fully</option>
         </select><br><br>
 
-        <label for="option7">Did you combine the disconnect and starter downstream of panel A?:</label>
+        <label for="option7">6. Did you include spaces in any panel boards?:</label>
         <select id="option7" name="option7">
             <option value="0">yes</option>
-            <option value="1">no</option>
+            <option value="4">no</option>
         </select><br><br>
 
-        <label for="option8">Did you combine any side-by-side panels?:</label>
+        <label for="option8">7. Did you combine any side-by-side panels?:</label>
         <select id="option8" name="option8">
-            <option value="0">yes</option>
-            <option value="1">no</option>
+            <option value="4">yes</option>
+            <option value="0">no</option>
         </select><br><br>
 
-        <label for="option9">Copper or Aluminum bus/nuetral/ground?:</label>
+        <label for="option9">8. Copper or Aluminum bus/nuetral/ground?:</label>
         <select id="option9" name="option9">
-            <option value="0">Aluminum</option>
-            <option value="1">Copper</option>
+            <option value="6">Aluminum</option>
+            <option value="0">Copper</option>
         </select><br><br>
 
-        <label for="option10">Was the 400A breaker in MSB thermal magnetic or electric?:</label>
+        <label for="option10">9. Were the 400A breakers in MSB thermal magnetic or electric?:</label>
         <select id="option10" name="option10">
             <option value="0">Thermal Magnetic</option>
-            <option value="1">Electronic</option>
+            <option value="4">Electronic</option>
         </select><br><br>
 
+        <label for="option11">10. Did you use ERMS or MMS in the MSB main?:</label>
+        <select id="option11" name="option11">
+            <option value="0">ERMS</option>
+            <option value="20">MMS</option>
+        </select><br><br>
         <!-- Repeat for options 3 to 8 -->
 
         <button type="button" onclick="calculateResult()">Submit</button>
     </form>
 
     <div id="result"></div>
+    <div id="response"></div>
+    <div id="response1"></div>
+    <div id="response2"></div>
+    <div id="response3"></div>
+    <div id="response4"></div>
+    <div id="response5"></div>
+    <div id="response6"></div>
+    <div id="response7"></div>
+    <div id="response8"></div>
+    <div id="response9"></div>
+
+
+
 
     <script>
         function calculateResult() {
@@ -91,15 +108,66 @@
             var option8 = parseInt(document.getElementById('option8').value);
             var option9 = parseInt(document.getElementById('option9').value);
             var option10 = parseInt(document.getElementById('option10').value);
-
+            var option11 = parseInt(document.getElementById('option11').value);
 
             // Repeat for option3 to option8
 
             // Perform calculation
-            var result = option1 + option2 + option3 + option4 + option5 + option6 + option7 + option8 + option9 + option10// Add up all option values
+            var result = option2 + option3 + option4 + option5 + option6 + option7 + option8 + option9 + option10 + option11// Add up all option values
             
             // Display result
             document.getElementById('result').innerHTML = "Result: " + result;
+
+            document.getElementById('response').innerHTML = '';
+            document.getElementById('response1').innerHTML = '';
+            document.getElementById('response2').innerHTML = '';
+            document.getElementById('response3').innerHTML = '';
+            document.getElementById('response4').innerHTML = '';
+            document.getElementById('response5').innerHTML = '';
+            document.getElementById('response6').innerHTML = '';
+            document.getElementById('response7').innerHTML = '';
+            document.getElementById('response8').innerHTML = '';
+            document.getElementById('response9').innerHTML = '';
+
+            if (option2 == 0) {
+                document.getElementById('response').innerHTML = "1. MSB could be quoted as an I-line because main rating is 1200A.";
+            }
+
+            if (option3 == 0) {
+                document.getElementById('response1').innerHTML = "2. Panel C is fed from feeder breaker in Panel B. There is no need for 2 disconnects in a row, therefore Panel C can be MLO.";
+            }
+
+            if (option4 == 0) {
+                document.getElementById('response2').innerHTML = "3. No need for the extra disconnect if Panel A1 is main circuit breaker.";
+            }
+
+            if (option5 == 0) {
+                document.getElementById('response3').innerHTML = "4. Panel A's SCCR can be dropped to 10kA becuase it is downstream of 150kVA XFMR. If panel seems too highly rated, you can always check using the XFMR SCCR calculator!";
+            }
+
+            if (option6 == 0) {
+                document.getElementById('response4').innerHTML = "5. The specifications don't clearly state fully, and series rating can significantly reduce costs.";
+            }
+
+            if (option7 == 0) {
+                document.getElementById('response5').innerHTML = "6. Each spaces can lead to larger panelboards. If they are not planning on expanding, spaces can be considered redundant.";
+            }
+
+            if (option8 == 0) {
+                document.getElementById('response6').innerHTML = "7. Panel A1 and A2 can be combined into one panel.";
+            }
+
+            if (option9 == 0) {
+                document.getElementById('response7').innerHTML = "8. Specs say Copper, however, due to project profile, it's safe to quote Aluminum, as long as you add a clarification.";
+            }
+
+            if (option10 == 0) {
+                document.getElementById('response8').innerHTML = "9. A 400A electronic breaker drops the frame size from M to L which reduced cosy of breaker.";
+            }
+
+            if (option11 == 0) {
+                document.getElementById('response9').innerHTML = "10. MSS is significantly less costly them ERMS.";
+            }
         }
     </script>
 </body>
